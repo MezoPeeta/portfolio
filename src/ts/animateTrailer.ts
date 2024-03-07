@@ -27,8 +27,8 @@ const getTrailerClass = (type: any) => {
 }
 
 
-window.onmousemove = e => {
-    const interactable = e.target!.closest(".interactable"),
+window.onmousemove = (e:any) => {
+    const interactable = e.target.closest(".interactable"),
         interacting = interactable !== null;
 
 
