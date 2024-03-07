@@ -1,0 +1,65 @@
+---
+import { Image } from "astro:assets";
+
+const {name,link,image,reverse,description,textAction,technology} = Astro.props;
+---
+<div class="projects" style="padding-top: 5%;padding-bottom: 5%;">
+    <a class="interactable" data-type="link" href={link} target="_blank" style={`flex-direction: ${reverse == "true" ? "row-reverse" : "row"}`}>
+        <div>
+			<h2>{name}</h2>
+			<p style="text-align: center;">{description}</p>
+			{textAction ? <p style="text-transform: uppercase;font-weight: bold;border: 2px solid black;text-align:center;padding:5%;">{textAction}</p>: <hr />}
+			<div>
+				<span style="font-weight: bold;">Technologies used: </span><br>
+				{technology}
+			</div>
+			
+		</div>
+        <Image src={image} alt="project_base" width="800" height="600" style="border-radius:22px;object-fit: cover;"/>
+
+    </a>
+
+</div>
+
+<style>
+	.projects h2{
+		padding-top: 5%;
+		font-size: 10rem;
+		margin-bottom: 0px;
+	}
+	.interactable img{
+		transform: scale(1);
+		-webkit-transition: .3s ease-in-out;
+		transition: .3s ease-in-out;
+
+	}
+	.interactable img:hover{
+		transform: scale(0.97);
+	}
+	.projects .interactable{
+		display:flex;
+		justify-content: space-around;
+		flex-direction: row;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+    @media screen and (max-width: 768px) {
+     
+	  .projects h1{
+		font-size: 3rem;
+	  }
+	  .projects .interactable, .projects h2{
+		padding: 5%;
+	}
+	.projects h2{
+		font-size: 5rem;
+		margin: 0;
+	}
+	.interactable img{
+		width: 100%;
+		height: 270px;
+
+	}
+}
+	
+</style>

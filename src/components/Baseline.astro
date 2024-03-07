@@ -1,0 +1,32 @@
+---
+const { text,buttonText } = Astro.props;
+
+---
+
+<div class="baseline">
+    <h1 aria-label="text">{text}</h1>
+    <h1 aria-label="button text">{buttonText}</h1>
+</div>
+<hr />
+<style>
+    hr {
+        margin-left: 5%;
+        margin-right: 5%;
+        background-color: rgb(0, 0, 0);
+        height: 3px;
+        border: black;
+    }
+
+    .baseline {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-top: 5%;
+    }
+    .baseline h1 {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+    }
+</style>
+

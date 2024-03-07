@@ -1,0 +1,68 @@
+---
+
+---
+
+<div id="trailer">
+	<i class="fa-solid fa-arrow-up-right" id="trailer-icon"></i>
+</div>
+
+<style>
+	#trailer {
+		background: white;
+		position: fixed;
+		height: 30px;
+		width: 30px;
+		border-radius: 30px;
+		left: 0px;
+		top: 0px;
+		z-index: 1000;
+		pointer-events: none;
+		opacity: 0;
+		transition: opacity 500ms ease;
+	}
+	body:hover > #trailer {
+		opacity: 1;
+		mix-blend-mode: difference;
+	}
+	#trailer:not([data-type=""]) > #trailer-icon {
+		opacity: 1;
+		margin-left: 42%;
+		position: relative;
+		top:7%;
+
+	}
+	
+	#trailer-icon {
+		font-size: 6px;
+		line-height: 4px;
+		opacity: 0;
+		transition: opacity 400ms ease;
+	}
+	.interactable {
+		aspect-ratio: 1 / 1.5;
+		width: clamp(120px, 40vmin, 600px);
+		background-position: center 50%;
+		background-size: 100%;
+		opacity: 0.4;
+
+		transition:
+			background-size 400ms ease,
+			opacity 400ms ease;
+	}
+
+	.interactable:hover {
+		background-size: 105%;
+		opacity: 0.8;
+	}
+
+	@media screen and (max-width: 768px) {
+		
+		#trailer{
+			display: none;
+		}
+		#trailer:not([data-type=""]) > #trailer-icon {
+		opacity: 0;
+
+	}
+	}
+</style>

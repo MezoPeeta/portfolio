@@ -1,0 +1,191 @@
+
+<div>
+  <h1 id="sayhi">
+    Let's Build <br />
+    <span style="margin-left: 20%;">together</span>
+  </h1>
+  <div class="🍯">
+    <p class="🍯-text">
+      I'm open to work, just say hello and let's start a productive cooperation
+    </p>
+    <form method="POST" action="#sayhi" id="contact-form">
+      <div class="🐱">
+        <div>
+          <input type="text" name="user_name" placeholder="Name" id="name" required/>
+          <span id="nameError" class="error" style="color:red"></span><br><br>
+        </div>
+        <div>
+          <input type="text" name="user_email" placeholder="Email" id="email" required/>
+          <span id="emailError" class="error" style="color:red"></span><br><br>
+
+        </div>
+      </div>
+      <div>
+        <div>
+          <textarea
+            name="message"
+            id="message"
+            cols="30"
+            rows="10"
+            placeholder="Message"
+            required
+            class="🐱‍🚀"></textarea>
+            <span id="messageError" class="error" style="color:red"></span><br><br>
+
+        </div>
+      </div>
+      <button type="submit"> Send Message</button>
+    </form>
+  </div>
+  <br />
+  <br />
+  <br />
+  <br />
+</div>
+
+<style>
+  #sayhi {
+    padding-left: 10%;
+    padding-top: 5%;
+    font-size: 10rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 7.5vw;
+    margin-bottom: 0px;
+  }
+
+  input,
+  textarea {
+    font-size: 2.1rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 62px;
+    border-radius: 22px;
+    background: transparent;
+    border: 2px solid black;
+    width: 100%;
+  }
+  textarea {
+    height: 150px;
+    margin-top: 2%;
+    min-height: 60px;
+    max-width: 101%;
+    resize: vertical;
+  }
+
+  button {
+    font-size: 1.5rem;
+    background: black;
+    color: white;
+    padding: 2%;
+    border-radius: 20px;
+  }
+  button:hover {
+    background: white;
+    border: 2px solid black;
+    border-radius: 22px;
+    color: black;
+  }
+  .🍯 {
+    padding-top: 10%;
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+  }
+  .🍯-text {
+    font-size: 1.5rem;
+    width: 20%;
+  }
+  .🐱 {
+    display: flex;
+    gap: 6%;
+  }
+  @media screen and (max-width: 768px) {
+    #sayhi {
+      font-size: 3rem;
+      line-height: 12vw;
+    }
+    .🍯 {
+      display: block;
+    }
+    .🍯-text {
+      width: 100%;
+      text-align: center;
+    }
+    .🐱 {
+      flex-direction: column;
+      width: 82%;
+      padding: 3%;
+      gap: 20px;
+    }
+    .🐱‍🚀 {
+      margin-left: 10px;
+      width: 82%;
+    }
+    button {
+      margin: auto;
+    }
+  }
+</style>
+
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+></script>
+
+<script is:inline>
+     emailjs.init({
+    publicKey: "L3MY38RekyzvVbj2s",
+  });
+
+  const validate = (event) => {
+      var name = document.getElementById('name').value;
+      var email = document.getElementById('email').value;
+      var message = document.getElementById('message').value;
+
+      var nameRegex = /^[a-zA-Z\s]+$/;
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      var nameError = document.getElementById('nameError');
+      var emailError = document.getElementById('emailError');
+      var messageError = document.getElementById('messageError');
+
+      nameError.textContent = '';
+      emailError.textContent = '';
+      messageError.textContent = '';
+
+      if (!name.match(nameRegex)) {
+        nameError.textContent = 'Please enter a valid name.';
+        event.preventDefault();
+      }
+
+      if (!email.match(emailRegex)) {
+        emailError.textContent = 'Please enter a valid email address.';
+        event.preventDefault();
+      }
+
+      if (message.trim() === '') {
+        messageError.textContent = 'Please enter a message.';
+        event.preventDefault();
+      }
+
+  }
+
+  const sendContactEmail = () => {
+    document.getElementById("contact-form")
+      .addEventListener("submit", function (event) {
+        validate(event)
+        event.preventDefault();
+        emailjs.sendForm("service_ea5y6sm", "template_ydh2ija", this).then(
+          () => {
+            alert("An Email has been sent successfully")
+          },
+          (error) => {
+            console.log("FAILED...", error);
+          }
+        );
+      });
+  };
+
+  window.onload = sendContactEmail
+</script>

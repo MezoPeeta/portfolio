@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import LatestWork from "../components/LatestWork.astro";
+
+---
+<Layout title="Portfolio">
+    <LatestWork
+    name="Livine"
+    reverse="true"
+    image="/img/livine.webp"
+    technology="Flutter (Mobile - Desktop) - Django (Backend) - Redis (Cache)"
+    link="https://livine.vercel.app/"
+    description="An android application written on Flutter, and Backend with Django"
+  />
+
+  <LatestWork
+    name="Nourish"
+    image="https://blog.myfitnesspal.com/wp-content/uploads/2021/01/UA_MealScan_Acai_1504x944.jpg"
+    textAction="Click to try"
+    technology="Pytorch - Python"
+    link="https://huggingface.co/spaces/mazenAI/livine-demo"
+    description="An Image classification model that classifies food and non food images built on PyTorch"
+  />
+  
+
+</Layout>
+

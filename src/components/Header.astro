@@ -1,0 +1,142 @@
+---
+import SocialMedia from "../components/SocialMedia.astro";
+import { Image } from "astro:assets";
+---
+
+<main>
+    <div class="header-main">
+        <Image
+            src="/img/me.webp"
+            width="100"
+            height="100"
+            alt="me"
+            style="border-radius: 20%;"
+            loading="eager"
+        />
+        <h1 class="header interactable">Mazen Omar</h1>
+    </div>
+    <h1 class="header interactable" id="header-designer">Designer</h1>
+    <h1 class="header interactable" id="header-eng">Engineer</h1>
+    <h1 class="header-subtext">
+        Specialized in Graphic Design, Backend, Mobile and Machine Learning
+    </h1>
+</main>
+<div class="header-footer">
+    <SocialMedia />
+    <Image src="/img/arrow-down.svg" alt="arrow-down" width="50" height="100"
+    style="padding-right: 2.5rem;padding-bottom: 2.5rem;padding-top:8%"
+    id="header-scroll" />
+    
+</div>
+
+<style>
+    .header {
+        font-size: 10rem;
+        line-height: 1;
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 0;
+        margin-top: 8rem;
+    }
+    .header-subtext {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        letter-spacing: 0.025em;
+        text-align: center;
+    }
+    .header-footer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: -10%;
+    }
+    #header-eng {
+        padding: 0rem;
+        margin-left: 10rem;
+        margin-top: 0;
+    }
+    #header-designer {
+        padding: 0rem;
+        margin-left: -34rem;
+        margin-top: 0px;
+    }
+    #header-scroll {
+        top: calc(100vh - 80px);
+        left: calc(50% - 14px);
+        animation: jumpInfinite 1.5s infinite;
+    }
+
+    #header-scroll:after {
+        content: " ";
+        position: absolute;
+        top: 12px;
+        left: -10px;
+        width: 16px;
+        height: 16px;
+        border-bottom: 4px solid;
+        border-right: 4px solid;
+        border-radius: 4px;
+        transform: rotateZ(45deg);
+    }
+
+    @keyframes jumpInfinite {
+        0% {
+            margin-top: 0;
+        }
+        50% {
+            margin-top: 20px;
+        }
+        100% {
+            margin-top: 0;
+        }
+    }
+
+    .header-main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-items: baseline;
+    }
+
+    @media screen and (max-width: 768px) {
+        .header {
+            font-size: 4rem;
+            
+        }
+        #header-designer {
+            margin-left: 0rem;
+        }
+        #header-eng {
+            margin-left: 0rem;
+        }
+        .header-main {
+            align-items: flex-end !important;
+            margin-left: 5%;
+            justify-content: none;
+        }
+        .header-main img {
+            height: 10%;
+        }
+        .header-footer{
+            display:none;
+
+        }
+    }
+
+    @media screen and (min-width: 769px) {
+        #header-designer {
+            margin-left: 10px;
+        }
+        #header-eng {
+            margin-left: 0px;
+        }
+    }
+    @media screen and (min-width: 1117px) {
+        #header-eng {
+            margin-left: 10rem;
+        }
+        #header-designer {
+            margin-left: -34rem;
+        }
+    }
+</style>

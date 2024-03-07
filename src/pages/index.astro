@@ -1,0 +1,81 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Baseline from "../components/Baseline.astro";
+import LatestWork from "../components/LatestWork.astro";
+import Services from "../components/services.astro";
+import Contact from "../components/contact.astro";
+---
+
+<Layout title="Mazen Omar">
+  <Header />
+  <div>
+    <p class="subheader" id="subheader">
+      Hi, I'm Mazen Omar, <span style="font-weight: bold;"
+        >a Computer Science student</span
+      > at 6th October University. With a specialization in <span
+        style="font-weight: bold;">graphic design</span
+      > and expertise in
+      <span style="font-weight: bold;"
+        >mobile, backend, and machine learning</span
+      > technologies, I'm passionate about <span style="font-weight: bold;"
+        >blending creativity</span
+      > with <span style="font-weight: bold;">cutting-edge technology</span> to bring
+      <span style="font-weight: bold;">innovative solutions</span> to life
+    </p>
+  </div>
+  <Baseline text="Portfolio" buttonText="See all projects" />
+  <h1 id="portfolio-text">Latest Projects</h1>
+  <LatestWork
+    name="Livine"
+    reverse="true"
+    image="/img/livine.webp"
+    link="https://livine.vercel.app/"
+    description="An android application written on Flutter, and Backend with Django"
+  />
+  <LatestWork
+    name="Gang"
+    image="/img/Gang.webp"
+    link="https://www.instagram.com/bailandoart/"
+    description="My latest artwork on instagram"
+  />
+  <LatestWork
+    name="Nourish"
+    image="https://blog.myfitnesspal.com/wp-content/uploads/2021/01/UA_MealScan_Acai_1504x944.jpg"
+    reverse="true"
+    textAction="Click to try"
+    link="https://huggingface.co/spaces/mazenAI/livine-demo"
+    description="An Image classification model that classifies food and non food images built on PyTorch"
+  />
+  <Services />
+
+  <Baseline text="My users' feedback" buttonText="" />
+
+  <Baseline text="Contact" buttonText="" />
+  <Contact />
+</Layout>
+
+<style>
+  .subheader {
+    margin: auto;
+    font-size: 2.7rem;
+    padding-bottom: 10%;
+    width: 80%;
+  }
+  #portfolio-text {
+    text-align: center;
+    font-size: 8rem;
+    text-transform: uppercase;
+    padding-bottom: 5%;
+  }
+
+  @media screen and (max-width: 768px) {
+    .subheader {
+      font-size: 1.6rem;
+      margin-top: 20%;
+    }
+	#portfolio-text{
+		font-size: 3rem;
+	  }
+  }
+</style>
