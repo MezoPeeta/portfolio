@@ -1,11 +1,13 @@
 ---
-const { text,buttonText } = Astro.props;
+const { text,buttonText, textHref } = Astro.props;
 
 ---
 
 <div class="baseline">
     <h1 aria-label="text">{text}</h1>
-    <h1 aria-label="button text">{buttonText}</h1>
+    <a href={textHref} aria-label="button text">
+        {buttonText}
+    </a>
 </div>
 <hr />
 <style>
@@ -24,7 +26,7 @@ const { text,buttonText } = Astro.props;
         padding-right: 5%;
         padding-top: 5%;
     }
-    .baseline h1 {
+    .baseline h1, .baseline a{
         font-size: 1.4rem;
         text-transform: uppercase;
     }

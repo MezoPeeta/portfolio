@@ -24,13 +24,15 @@ import Contact from "../components/contact.astro";
       <span style="font-weight: bold;">innovative solutions</span> to life
     </p>
   </div>
-  <Baseline text="Portfolio" buttonText="See all projects" />
+  <Baseline text="Portfolio" buttonText="See all projects" textHref="/portfolio"/>
   <h1 id="portfolio-text">Latest Projects</h1>
   <LatestWork
     name="Livine"
     reverse="true"
     image="/img/livine.webp"
     link="https://livine.vercel.app/"
+    technology="Flutter (Mobile) - Django (Backend) - Redis (Cache)"
+
     description="An android application written on Flutter, and Backend with Django"
   />
   <LatestWork
@@ -38,12 +40,14 @@ import Contact from "../components/contact.astro";
     image="/img/Gang.webp"
     link="https://www.instagram.com/bailandoart/"
     description="My latest artwork on instagram"
+    technology="Adobe Photoshop"
   />
   <LatestWork
     name="Nourish"
     image="https://blog.myfitnesspal.com/wp-content/uploads/2021/01/UA_MealScan_Acai_1504x944.jpg"
     reverse="true"
     textAction="Click to try"
+    technology="Pytorch - Python"
     link="https://huggingface.co/spaces/mazenAI/livine-demo"
     description="An Image classification model that classifies food and non food images built on PyTorch"
   />
