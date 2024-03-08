@@ -5,9 +5,13 @@ const { text,buttonText, textHref } = Astro.props;
 
 <div class="baseline">
     <h1 aria-label="text">{text}</h1>
-    <a href={textHref} aria-label="button text">
-        {buttonText}
-    </a>
+        <h1>
+            <a href={textHref} aria-label="button text">
+
+            {buttonText}
+        </a>
+
+        </h1>
 </div>
 <hr />
 <style>
