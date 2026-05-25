@@ -1,189 +1,188 @@
-
-<div>
-  <h1 id="sayhi">
-    Let's Build together
-  </h1>
-  <div class="🍯">
-    <p class="🍯-text">
-      I'm open to work, just say hello and let's start a productive cooperation
-    </p>
-    <form method="POST" action="#sayhi" id="contact-form">
-      <div class="🐱">
-        <div>
-          <input type="text" name="user_name" placeholder="Name" id="name" required/>
-          <span id="nameError" class="error" style="color:red"></span><br><br>
-        </div>
-        <div>
-          <input type="text" name="user_email" placeholder="Email" id="email" required/>
-          <span id="emailError" class="error" style="color:red"></span><br><br>
-
-        </div>
-      </div>
-      <div>
-        <div>
-          <textarea
-            name="message"
-            id="message"
-            cols="30"
-            rows="10"
-            placeholder="Message"
-            required
-            class="🐱‍🚀"></textarea>
-            <span id="messageError" class="error" style="color:red"></span><br><br>
-
-        </div>
-      </div>
-      <button type="submit"> Send Message</button>
-    </form>
-  </div>
-  <br />
-  <br />
-  <br />
-  <br />
+<div id="sayhi" data-animate="fade-up" class="contact-wrapper">
+  <a
+    href="mailto:mazenomar-@outlook.com"
+    class="sayhi interactable"
+    data-type="link"
+    aria-label="Send me an email"
+  >
+    Let's build your app
+    <span class="app-icon" aria-hidden="true">
+      <span class="app-icon__q">?</span>
+      <svg
+        class="app-icon__svg app-icon__play"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+      >
+        <path
+          d="M1.571 23.664l10.531-10.501 3.712 3.701-12.519 6.941c-.476.264-1.059.26-1.532-.011l-.192-.13zm9.469-11.56l-10.04 10.011v-20.022l10.04 10.011zm6.274-4.137l4.905 2.719c.482.268.781.77.781 1.314s-.299 1.046-.781 1.314l-5.039 2.793-4.015-4.003 4.149-4.137zm-15.854-7.534c.09-.087.191-.163.303-.227.473-.271 1.056-.275 1.532-.011l12.653 7.015-3.846 3.835-10.642-10.612z"
+        ></path>
+      </svg>
+      <svg
+        class="app-icon__svg app-icon__apple"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M22 17.607c-.786 2.28-3.139 6.317-5.563 6.361-1.608.031-2.125-.953-3.963-.953-1.837 0-2.412.923-3.932.983-2.572.099-6.542-5.827-6.542-10.995 0-4.747 3.308-7.1 6.198-7.143 1.55-.028 3.014 1.045 3.959 1.045.949 0 2.727-1.29 4.596-1.101.782.033 2.979.315 4.389 2.377-3.741 2.442-3.158 7.549.858 9.426zm-5.222-17.607c-2.826.114-5.132 3.079-4.81 5.531 2.612.203 5.118-2.725 4.81-5.531z"
+        ></path>
+      </svg>
+    </span>
+  </a>
 </div>
 
 <style>
-  #sayhi {
-    padding-left: 10%;
-    font-size: 10rem;
+.contact-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 5% 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+  .sayhi {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: clamp(3rem, 10vw, 10rem);
     font-weight: bold;
     text-transform: uppercase;
-    line-height: 7.5vw;
-    margin-bottom: 0px;
-  }
-
-  input,
-  textarea {
-    font-size: 2.1rem;
-    padding-left: 20px;
-    padding-right: 20px;
-    height: 62px;
-    border-radius: 22px;
-    background: transparent;
-    border: 2px solid black;
-    width: 100%;
-  }
-  textarea {
-    height: 150px;
-    margin-top: 2%;
-    min-height: 60px;
-    max-width: 101%;
-    resize: vertical;
-  }
-
-  button {
-    font-size: 1.5rem;
-    background: black;
+    line-height: 0.95;
+    text-align: center;
     color: white;
-    padding: 2%;
-    border-radius: 20px;
+    text-decoration: none;
   }
-  button:hover {
-    background: white;
-    border: 2px solid black;
-    border-radius: 22px;
-    color: black;
-  }
-  .🍯 {
-    padding-top: 5%;
-    display: flex;
+
+  .app-icon {
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
-    gap: 5%;
+    position: relative;
+    width: 1.8em;
+    height: 1.8em;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    font-size: 0.45em;
+    font-weight: bold;
+    flex-shrink: 0;
+    vertical-align: middle;
+    overflow: hidden;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    transition: background 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      border-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
-  .🍯-text {
-    font-size: 1.5rem;
-    width: 20%;
+
+  .app-icon:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
   }
-  .🐱 {
+
+  .app-icon__q {
+    position: absolute;
+    inset: 0;
     display: flex;
-    gap: 6%;
+    align-items: center;
+    justify-content: center;
+    animation: show-q 3.5s ease-in-out infinite;
   }
-  @media screen and (max-width: 768px) {
-    #sayhi {
-      font-size: 3rem;
-      line-height: 12vw;
+
+  .app-icon__svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 55%;
+    height: 55%;
+    fill: white;
+    opacity: 0;
+  }
+
+  .app-icon__play {
+    animation: show-play 3.5s ease-in-out infinite;
+  }
+
+  .app-icon__apple {
+    animation: show-apple 3.5s ease-in-out infinite;
+  }
+
+  @media (max-width: 768px) {
+    .contact-wrapper {
+      margin-top: 5%;
     }
-    .🍯 {
-      display: block;
+
+    .app-icon {
+      font-size: 0.7em;
+      border-radius: 20px;
+      margin-top: 0.5em;
     }
-    .🍯-text {
-      width: 100%;
-      text-align: center;
+  }
+
+  @keyframes show-q {
+    0%,
+    28% {
+      opacity: 1;
+      transform: scale(1);
     }
-    .🐱 {
-      flex-direction: column;
-      width: 82%;
-      padding: 3%;
-      gap: 20px;
+    35% {
+      opacity: 0;
+      transform: scale(0.85);
     }
-    .🐱‍🚀 {
-      margin-left: 10px;
-      width: 82%;
+    92% {
+      opacity: 0;
+      transform: scale(0.85);
     }
-    button {
-      margin: auto;
+    99%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes show-play {
+    0%,
+    35% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.85);
+    }
+    42%,
+    58% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    65% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.85);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.85);
+    }
+  }
+
+  @keyframes show-apple {
+    0%,
+    65% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.85);
+    }
+    72%,
+    85% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    92% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.85);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.85);
     }
   }
 </style>
-
-<script
-  type="text/javascript"
-  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
-></script>
-
-<script is:inline>
-     emailjs.init({
-    publicKey: "L3MY38RekyzvVbj2s",
-  });
-
-  const validate = (event) => {
-      var name = document.getElementById('name').value;
-      var email = document.getElementById('email').value;
-      var message = document.getElementById('message').value;
-
-      var nameRegex = /^[a-zA-Z\s]+$/;
-      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-      var nameError = document.getElementById('nameError');
-      var emailError = document.getElementById('emailError');
-      var messageError = document.getElementById('messageError');
-
-      nameError.textContent = '';
-      emailError.textContent = '';
-      messageError.textContent = '';
-
-      if (!name.match(nameRegex)) {
-        nameError.textContent = 'Please enter a valid name.';
-        event.preventDefault();
-      }
-
-      if (!email.match(emailRegex)) {
-        emailError.textContent = 'Please enter a valid email address.';
-        event.preventDefault();
-      }
-
-      if (message.trim() === '') {
-        messageError.textContent = 'Please enter a message.';
-        event.preventDefault();
-      }
-
-  }
-
-  const sendContactEmail = () => {
-    document.getElementById("contact-form")
-      .addEventListener("submit", function (event) {
-        validate(event)
-        event.preventDefault();
-        emailjs.sendForm("service_ea5y6sm", "template_ydh2ija", this).then(
-          () => {
-            alert("An Email has been sent successfully")
-          },
-          (error) => {
-            console.log("FAILED...", error);
-          }
-        );
-      });
-  };
-
-  window.onload = sendContactEmail
-</script>

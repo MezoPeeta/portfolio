@@ -1,32 +1,36 @@
 ---
-
+const currentPath = Astro.url.pathname;
 ---
 
 <header class="primary-header flex">
   <div>
     <a href="/">
       <h1 class="logo">Mazen</h1>
-
     </a>
   </div>
-  <button
-    class="mobile-nav-toggle"
-    aria-controls="primary-navigation"
-    aria-expanded="false"><span class="sr-only">Menu</span></button
-  >
-  
 
   <nav>
-    <ul
-      data-visible="false"
-      id="primary-navigation"
-      class="primary-navigation flex"
-    >
-      <li>
-        <a href="/portfolio"> Portfolio</a>
+    <ul id="primary-navigation" class="primary-navigation flex">
+      <li class="home-link">
+        <a href="/" class:list={[{ active: currentPath === "/" }]}>Home</a>
       </li>
       <li>
+        <a
+          href="/portfolio"
+          class:list={[{ active: currentPath === "/portfolio" }]}
+        >
+          Projects</a
+        >
+      </li>
+      <li class="contact-link">
         <a href="/#sayhi"> Contact</a>
+      </li>
+      <li class="resume-link">
+        <a
+          href="https://drive.google.com/file/d/1yt4IKX60ADbKwReyncjHz5YiPdoYFTKv/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer">Resume</a
+        >
       </li>
     </ul>
   </nav>
@@ -42,90 +46,141 @@
     text-transform: uppercase;
   }
   .primary-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 100;
+    background: transparent;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     font-size: 1.3rem;
+    padding-inline: 1.5rem;
+  }
+  .primary-header::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10rem;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    z-index: -1;
+    pointer-events: none;
   }
   .primary-navigation {
     list-style: none;
     padding: 0;
     margin: 0;
+    --gap: 2.5rem;
+    align-items: center;
   }
   .primary-navigation a > [aria-hidden="true"] {
     font-weight: 700;
     margin-inline-end: 0.75em;
   }
 
-  .mobile-nav-toggle {
+  /* Hide Home on desktop — the logo already serves that purpose */
+  .home-link {
     display: none;
   }
 
+  /* Resume — pill outline button on desktop */
+  .resume-link a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.28em 1.1em;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-indent: 0.04em; /* offset letter-spacing so text stays visually centred */
+    line-height: 1;
+    border: 1.5px solid hsl(0 0% 100% / 0.55);
+    border-radius: 9999px;
+    text-decoration: none;
+    color: hsl(0 0% 92%);
+    background: hsl(0 0% 100% / 0.05);
+    transition:
+      border-color 0.25s ease,
+      background 0.25s ease,
+      box-shadow 0.25s ease,
+      color 0.25s ease;
+  }
+  .resume-link a:hover {
+    border-color: hsl(0 0% 100% / 0.85);
+    background: hsl(0 0% 100% / 0.08);
+    color: hsl(0 0% 100%);
+    box-shadow:
+      0 0 10px hsl(0 0% 100% / 0.15),
+      0 0 24px hsl(0 0% 100% / 0.08);
+  }
+
   @media (max-width: 35em) {
-    .primary-header{
-      justify-content: space-between;
+    .contact-link {
+      display: none;
     }
+    /* Hide Resume from the mobile floating pill */
+    .resume-link {
+      display: none;
+    }
+  }
+
+  @media (max-width: 35em) {
+    .primary-header {
+      justify-content: center;
+    }
+    .primary-header::after {
+      height: 6rem;
+    }
+    .logo {
+      margin: 1.5rem;
+      font-size: 1.5rem;
+    }
+
+    /* Show Home link only in mobile floating bar */
+    .home-link {
+      display: list-item;
+    }
+
     .primary-navigation {
-      --gap: 3em;
+      --gap: 2rem;
       position: fixed;
-      inset: 0 0 0 30%;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
       z-index: 1000;
-      background: steelblue;
-      flex-direction: column;
-      padding: min(30vh, 10rem) 2em;
-      background: hsla(0, 0%, 80%, 0.75);
-      transform: translateX(100%);
-      transition: transform 350ms ease-out;
+      flex-direction: row;
+      padding: 0.75rem 2rem;
+      background: hsla(0, 0%, 15%, 0.85);
+      border-radius: 100px;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     }
 
-    .primary-navigation[data-visible="true"] {
-      transform: translateX(0%);
-    }
-    header {
-      position: fixed;
-      width: 100%;
-      background: rgb(173, 173, 173);
-      border-bottom-left-radius: 22px;
-      border-bottom-right-radius: 22px;
-      z-index: 100;
-      
+    .primary-navigation a {
+      font-size: 1rem;
+      white-space: nowrap;
+      color: hsl(0 0% 60%);
+      transition: color 0.2s ease;
     }
 
-    
-    .mobile-nav-toggle {
-      display: block;
-      position: absolute;
-      width: 2rem;
-      background-repeat: no-repeat;
-      border: 0;
-      aspect-ratio: 0.8;
-      top: 2rem;
-      right: 2rem;
-      z-index: 9999;
-      background: url("/img/bars-solid.svg");
+    .primary-navigation a.active {
+      color: hsl(0 0% 100%);
+      font-weight: 600;
     }
 
     @supports (backdrop-filter: blur(1rem)) {
       .primary-navigation {
-        background: hsl(0 0% 100% /0.1);
+        background: hsl(0 0% 15% / 0.7);
         backdrop-filter: blur(1rem);
       }
-      
     }
   }
-
-  
 </style>
-
-<script>
-  const primaryNav = document.querySelector(".primary-navigation");
-  const navToggle = document.querySelector(".mobile-nav-toggle");
-
-  navToggle?.addEventListener("click", () => {
-    const visibility = primaryNav?.getAttribute("data-visible");
-    if (visibility === "false") {
-      primaryNav?.setAttribute("data-visible", "true");
-    } else if (visibility === "true") {
-      primaryNav?.setAttribute("data-visible", "false");
-    }
-  });
-</script>

@@ -5,57 +5,67 @@ import Baseline from "../components/Baseline.astro";
 import LatestWork from "../components/LatestWork.astro";
 import Services from "../components/services.astro";
 import Contact from "../components/contact.astro";
+import { projects } from "../data/projects";
 ---
 
 <Layout title="Mazen Omar">
   <Header />
   <div>
-    <p class="subheader" id="subheader">
-      Hi, I'm Mazen Omar, <span style="font-weight: bold;"
-        >a Computer Science student</span
-      > at 6th October University. With a specialization in <span
-        style="font-weight: bold;">graphic design</span
-      > and expertise in
-      <span style="font-weight: bold;"
-        >mobile, backend, and machine learning</span
-      > technologies, I'm passionate about <span style="font-weight: bold;"
-        >blending creativity</span
-      > with <span style="font-weight: bold;">cutting-edge technology</span> to bring
-      <span style="font-weight: bold;">innovative solutions</span> to life
+    <p class="subheader" id="subheader" data-animate="fade-up">
+      Hi, I'm Mazen Omar, a <span style="font-weight: bold;"
+        >Mobile Engineer</span
+      >
+      who obsesses over <span style="font-weight: bold;"
+        >quality and detail</span
+      >. I craft <span style="font-weight: bold;"
+        >polished mobile experiences</span
+      >, turning complex problems into <span style="font-weight: bold;"
+        >elegant, purposeful products</span
+      >.
     </p>
   </div>
-  <Baseline text="Portfolio" buttonText="See all projects" textHref="/portfolio"/>
-  <h1 id="portfolio-text">Latest Projects</h1>
-  <LatestWork
-    name="Livine"
-    reverse="true"
-    image="/img/livine.webp"
-    link="https://livine.vercel.app/"
-    technology="Flutter (Mobile) - Django (Backend) - Redis (Cache)"
 
-    description="An android application written on Flutter, and Backend with Django"
+  <div class="resume-cta-wrap">
+    <a
+      href="https://drive.google.com/file/d/1yt4IKX60ADbKwReyncjHz5YiPdoYFTKv/view?usp=sharing"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="resume-cta"
+    >
+      View Resume <span class="arrow" aria-hidden="true">↗</span>
+    </a>
+  </div>
+  <Baseline
+    text="Projects"
+    buttonText="See all projects"
+    textHref="/portfolio"
   />
-  <LatestWork
-    name="Gang"
-    image="/img/Gang.webp"
-    link="https://www.instagram.com/bailandoart/"
-    description="My latest artwork on instagram"
-    technology="Adobe Photoshop"
-  />
-  <LatestWork
-    name="Nourish"
-    image="https://blog.myfitnesspal.com/wp-content/uploads/2021/01/UA_MealScan_Acai_1504x944.jpg"
-    reverse="true"
-    textAction="Click to try"
-    technology="Pytorch - Python"
-    link="https://huggingface.co/spaces/mazenAI/livine-demo"
-    description="An Image classification model that classifies food and non food images built on PyTorch"
-  />
+  <h1 id="portfolio-text" data-animate="fade-up">Latest Projects</h1>
+  {
+    projects
+      .slice(0, 4)
+      .map((project) => (
+        <LatestWork
+          name={project.name}
+          reverse={project.reverse}
+          images={project.images}
+          link={project.link}
+          technology={project.technology}
+          description={project.description}
+          playStoreLink={project.playStoreLink}
+          appStoreLink={project.appStoreLink}
+          platform={project.platform}
+          year={project.year}
+          role={project.role}
+          stats={project.stats}
+        />
+      ))
+  }
   <Services />
 
   <!-- <Baseline text="My users' feedback" buttonText="" /> -->
 
-  <Baseline text="Contact" buttonText="" />
+  <Baseline text="Hire Me" buttonText="" />
   <Contact />
 </Layout>
 
@@ -72,13 +82,122 @@ import Contact from "../components/contact.astro";
     padding-bottom: 5%;
   }
 
+  /* ── Resume CTA — desktop ───────────────────────────────────────── */
+  .resume-cta-wrap {
+    width: 80%;
+    margin: 2.2rem auto 0;
+  }
+
+  .resume-cta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    font-size: 1.6rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: hsl(0 0% 90%);
+    text-decoration: none;
+    padding-bottom: 5px;
+    transition: color 0.25s ease;
+  }
+
+  /* thin stub at rest → full line on hover */
+  .resume-cta::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0.22);
+    transform-origin: left;
+    opacity: 0.4;
+    transition:
+      transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.3s ease;
+  }
+
+  .resume-cta:hover {
+    color: hsl(0 0% 100%);
+  }
+
+  .resume-cta:hover::after {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+
+  .resume-cta .arrow {
+    display: inline-block;
+    font-size: 0.85em;
+    line-height: 1;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .resume-cta:hover .arrow {
+    transform: translate(4px, -4px);
+  }
+
+  /* ── Resume CTA — mobile ─────────────────────────────────────────── */
   @media screen and (max-width: 768px) {
     .subheader {
       font-size: 1.6rem;
       margin-top: 20%;
     }
-	#portfolio-text{
-		font-size: 3rem;
-	  }
+    #portfolio-text {
+      font-size: 3rem;
+    }
+
+    .resume-cta-wrap {
+      margin: 2.8rem auto 1.2rem;
+      width: 80%;
+    }
+
+    /* Switch to a glass pill on mobile — underline replaced by border */
+    .resume-cta {
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: hsl(0 0% 95%);
+      padding: 0.65em 1.5em;
+      border: 1px solid hsl(0 0% 100% / 0.22);
+      border-radius: 9999px;
+      background: hsl(0 0% 100% / 0.05);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.15s ease;
+    }
+
+    /* hide desktop underline — pill border carries the affordance */
+    .resume-cta::after {
+      display: none;
+    }
+
+    /* tap feedback */
+    .resume-cta:active {
+      transform: scale(0.96);
+      background: hsl(0 0% 100% / 0.1);
+    }
+
+    .resume-cta:hover {
+      border-color: hsl(0 0% 100% / 0.5);
+      background: hsl(0 0% 100% / 0.08);
+      box-shadow: 0 0 18px hsl(0 0% 100% / 0.06);
+      color: hsl(0 0% 100%);
+    }
+
+    .resume-cta .arrow {
+      font-size: 0.9em;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .resume-cta:hover .arrow {
+      transform: translate(3px, -3px);
+    }
   }
 </style>

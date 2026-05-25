@@ -1,0 +1,82 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Baseline from "../components/Baseline.astro";
+import LatestWork from "../components/LatestWork.astro";
+import Services from "../components/services.astro";
+import Contact from "../components/contact.astro";
+import { projects } from "../data/projects";
+---
+
+<Layout title="Mazen Omar">
+  <Header />
+  <div>
+    <p class="subheader" id="subheader" data-animate="fade-up">
+      Hi, I'm Mazen Omar, a <span style="font-weight: bold;"
+        >Mobile Engineer</span
+      >
+      who obsesses over <span style="font-weight: bold;"
+        >quality and detail</span
+      >. I craft <span style="font-weight: bold;"
+        >polished mobile experiences</span
+      >, turning complex problems into <span style="font-weight: bold;"
+        >elegant, purposeful products</span
+      >.
+    </p>
+  </div>
+  <Baseline
+    text="Portfolio"
+    buttonText="See all projects"
+    textHref="/portfolio"
+  />
+  <h1 id="portfolio-text" data-animate="fade-up">Latest Projects</h1>
+  {
+    projects
+      .slice(0, 4)
+      .map((project) => (
+        <LatestWork
+          name={project.name}
+          reverse={project.reverse}
+          images={project.images}
+          link={project.link}
+          technology={project.technology}
+          description={project.description}
+          playStoreLink={project.playStoreLink}
+          appStoreLink={project.appStoreLink}
+          platform={project.platform}
+          year={project.year}
+          role={project.role}
+        />
+      ))
+  }
+  <Services />
+
+  <!-- <Baseline text="My users' feedback" buttonText="" /> -->
+
+  <Baseline text="Hire Me" buttonText="" />
+  <Contact />
+</Layout>
+
+<style>
+  .subheader {
+    margin: auto;
+    font-size: 2.7rem;
+    width: 80%;
+  }
+  #portfolio-text {
+    text-align: center;
+    font-size: 8rem;
+    text-transform: uppercase;
+    padding-bottom: 5%;
+  }
+
+  @media screen and (max-width: 768px) {
+    .subheader {
+      font-size: 1.6rem;
+      margin-top: 20%;
+    }
+    #portfolio-text {
+      font-size: 3rem;
+    }
+  }
+</style>

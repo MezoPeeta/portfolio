@@ -15,18 +15,19 @@ import { Image } from "astro:assets";
         />
         <h1 class="header interactable">Mazen Omar</h1>
     </div>
-    <h1 class="header interactable" id="header-designer">Designer</h1>
-    <h1 class="header interactable" id="header-eng">Engineer</h1>
-    <h1 class="header-subtext">
-        Specialized in Graphic Design, Backend, Mobile and Machine Learning
-    </h1>
+    <h1 class="header-subtext">Specialized in Mobile Development</h1>
 </main>
 <div class="header-footer">
     <SocialMedia />
-    <Image src="/img/arrow-down.svg" alt="arrow-down" width="50" height="100"
-    style="padding-right: 2.5rem;padding-bottom: 2.5rem;padding-top:8%"
-    id="header-scroll" />
-    
+    <Image
+        src="/img/arrow-down.svg"
+        alt="arrow-down"
+        width="50"
+        height="100"
+        style="padding-right: 2.5rem;padding-bottom: 2.5rem;padding-top:8%"
+        id="header-scroll"
+        loading="eager"
+    />
 </div>
 
 <style>
@@ -36,7 +37,6 @@ import { Image } from "astro:assets";
         text-transform: uppercase;
         text-align: center;
         font-weight: bold;
-        margin-bottom: 0;
         margin-top: 8rem;
     }
     .header-subtext {
@@ -55,7 +55,7 @@ import { Image } from "astro:assets";
         margin-left: 10rem;
         margin-top: 0;
     }
-    #header-designer {
+    #header-mobile {
         padding: 0rem;
         margin-left: -34rem;
         margin-top: 0px;
@@ -101,9 +101,8 @@ import { Image } from "astro:assets";
     @media screen and (max-width: 768px) {
         .header {
             font-size: 4rem;
-            
         }
-        #header-designer {
+        #header-mobile {
             margin-left: 0rem;
         }
         #header-eng {
@@ -111,24 +110,22 @@ import { Image } from "astro:assets";
         }
         .header-main {
             align-items: flex-end !important;
-            margin-left: 5%;
             justify-content: none;
         }
         .header-main img {
-            height: 10%;
+            display: none;
         }
-        .header-footer{
-            display:none;
-
+        .header-footer {
+            display: none;
         }
-        .header-subtext{
+        .header-subtext {
             width: 80%;
             margin: auto;
         }
     }
 
     @media screen and (min-width: 769px) {
-        #header-designer {
+        #header-mobile {
             margin-left: 10px;
         }
         #header-eng {
@@ -139,7 +136,7 @@ import { Image } from "astro:assets";
         #header-eng {
             margin-left: 10rem;
         }
-        #header-designer {
+        #header-mobile {
             margin-left: -34rem;
         }
     }
