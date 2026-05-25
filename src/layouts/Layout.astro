@@ -7,7 +7,6 @@ interface Props {
 }
 
 const { title } = Astro.props;
-Astro.response.headers.set("Cache-Control", "public,max-age=604800,immutable");
 ---
 
 <!doctype html>
