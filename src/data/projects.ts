@@ -17,7 +17,7 @@ export const projects: Project[] = [
   {
     name: "Hydex",
     reverse: true,
-    images: ["/gifs/hydex-1.webm", "/gifs/hydex-2.webm", "public/gifs/hydex-3.webm"],
+    images: ["/gifs/hydex-1.webm", "/gifs/hydex-2.webm", "/gifs/hydex-3.webm"],
     link: "#",
     technology: ["Flutter", "Lottie"],
     description:
@@ -68,17 +68,17 @@ export const projects: Project[] = [
       "Github Actions (CI/CD)",
     ],
   },
-  {
-    name: "Mostaqem",
-    images: ["https://placehold.co/800x600"],
-    link: "#",
-    technology: ["Jetpack Compose"],
-    platform: "Android",
-    year: "2024",
-    description:
-      "An Islamic media app offering Quran and podcasts — completely free, with no ads or subscriptions",
-    playStoreLink:
-      "https://play.google.com/store/apps/details?id=com.mostaqem&hl=en",
-    stats: ["Offline", "History", "Favorites"],
-  },
+  // {
+  //   name: "Mostaqem",
+  //   images: ["https://placehold.co/800x600"],
+  //   link: "#",
+  //   technology: ["Jetpack Compose"],
+  //   platform: "Android",
+  //   year: "2024",
+  //   description:
+  //     "An Islamic media app offering Quran and podcasts — completely free, with no ads or subscriptions",
+  //   playStoreLink:
+  //     "https://play.google.com/store/apps/details?id=com.mostaqem&hl=en",
+  //   stats: ["Offline", "History", "Favorites"],
+  // },
 ];
